@@ -1,13 +1,13 @@
 DIM_TO_READ = {"larghezza", "lunghezza"} #LISTA DIMENSIONI DA LEGGERE
 
 """
-Descrizione: funzione che controlla che una data variabile sia numerica
-@input dim
-@output dim convertita in float, -1 nel caso di errore
+Descrizione: funzione che controlla che una dato valore sia numerico
+@input val
+@output val convertito in float, -1 nel caso di errore
 """
-def checkDim(dim):
+def checkDim(val):
     try:
-        return float(dim);
+        return float(val);
     except:
         print("Hai inserito un valore non ammesso. Riprova \n")
         return -1
