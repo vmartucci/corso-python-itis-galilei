@@ -6,12 +6,11 @@ monete = {200 : 0, 100 : 0, 25 : 0, 10 : 0, 5 : 0, 1 : 0}
 
 importo = int(input("Inserisci importo -> "));
 
-while importo > 0 :
-    for moneta in monete.keys() :
-        if importo >= moneta :
+#PER OGNI MONETA (DALLA PIU' GRANDE ALLA PIU' PICCOLA)
+for moneta in monete.keys() :
+    while importo >= moneta :     #FINCHE' L'IMPORTO E' MAGGIORE O UGUALE ALLA MONETA, USO TALE MONETA PER IL RESTO
             importo -= moneta
             monete[moneta] += 1
-            break
 
 print("\nMonete restituite:")
 for moneta in monete.keys() :
