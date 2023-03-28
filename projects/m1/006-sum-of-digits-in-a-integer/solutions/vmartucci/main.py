@@ -1,49 +1,37 @@
-DIM_TO_READ = {"larghezza", "lunghezza"} #LISTA DIMENSIONI DA LEGGERE
+def converti_in_int(num_stringa: str):
+    num = [0,0,0,0]
+    for i, c in enumerate(num_stringa):
+        try:
+            num[i] = int(c)
+        except:
+            print("Errore: Hai inserito un valore non intero \n")
+            return -1
+    return num
 
-"""
-Descrizione: funzione che controlla che il valore ricevuto in input sia numerico
-@input dim
-@output dim convertita in float, -1 nel caso di errore
-"""
-def checkDim(dim):
-    try:
-        return float(dim);
-    except:
-        print("Hai inserito un valore non ammesso. Riprova \n")
-        return -1
 
-"""
-Descrizione: funzione che chiede all'utente di inserire una dimensione della stanza e la restituisce
-@input: dimensione da leggere
-@output: dimensione letta
-"""
-def inputDimensione(dimDaLeggere: str):
-    while True:
-        dim = checkDim(input(f"Inserisci {dimDaLeggere} "));
-        if dim != -1:
-            break
-    return dim
+def leggi_4_cifre():
+    num_stringa = str(input("Inserisci un numero a 4 cifre -> "))
 
-"""
-Descrizione: legge da input le dimensioni richieste e le restituisce
-@input: none
-@output: lista dimensioni lette
-"""
+    while len(num_stringa) != 4 :
+        print('Errore: non hai inserito 4 cifre \n')
+        num_stringa = str(input("Inserisci un numero a 4 cifre -> "))
 
-def inputDimensioni():
-    dimensioni = [];
-    for d in DIM_TO_READ:
-        dimensioni.append(inputDimensione(d));
-    return dimensioni;
+    return num_stringa
 
-"""
-Descrizione: funzione che calcola la superficie di una stanza
-@input: larghezza e lunghezza della stanza
-@output: superficie
-"""
-def calcolaAreaStanza(larg: float, lung: float):
-    return round(larg*lung,2);
 
-dimensioni = inputDimensioni();
-superficie = calcolaAreaStanza(dimensioni[0], dimensioni[1]);
-print(f"Superficie della stanza = {superficie} mq")
+def get_input():
+    number = -1
+    while number == -1:
+        number = converti_in_int(leggi_4_cifre())
+    return number
+
+
+def sommaCifre(number):
+    somma = 0
+    for c in number:
+        somma += c
+    return somma
+
+
+number = get_input()
+print(f'Somma = {sommaCifre(number)}')
