@@ -1,41 +1,29 @@
-deposit_le_1Lt = 0.10
-deposit_g_1Lt = 0.25
-
-"""
-Descrizione: funzione che controlla che il valore ricevuto in input sia numerico
-@input n
-@output n convertito in float, -1 nel caso di errore
-"""
-def checkInput(n):
-    try:
-        return float(n);
-    except:
-        print("Hai inserito un valore non ammesso. Riprova \n")
-        return -1
-
-"""
-Descrizione: funzione che chiede all'utente di inserire un valore e lo restituisce convertito in float
-@input: testo da visualizzare in output
-@output: dimensione letta
-"""
-def readInput(testo: str):
-    while True:
-        n = checkInput(input(testo));
-        if n != -1:
-            break
-    return n
-
-"""
-Descrizione: funzione che calcola il rimborso
-@input: tot_le_1Lt, tot_g_1Lt num di bottiglie con capacità fino ad 1 litro e maggiore di 1 litro
-@output: rimborso
-"""
-def getRefund(tot_le_1Lt, tot_g_1Lt):
-    #calcolo il rimborso e arrotondo a due cifre dopo la virgola
-    return "{:.2f}".format(tot_le_1Lt * deposit_le_1Lt + tot_g_1Lt * deposit_g_1Lt)
+COSTO = 3.49
+PERC_SCONTO = 60 / 100
 
 
-tot_le_1Lt = readInput("Inserisci il numero di contenitori con capacità fino ad 1 litro -> ");
-tot_g_1Lt = readInput("Inserisci il numero di contenitori con capacità superiore ad 1 litro -> ");
+def calcola_costo(num_pane_raffermo: int):
+    return num_pane_raffermo * COSTO
 
-print(f"Rimborso = {getRefund(tot_le_1Lt, tot_g_1Lt)}$")
+
+def calcola_sconto(prezzo: float):
+    return PERC_SCONTO * prezzo
+
+
+def applica_sconto(prezzo: float, sconto: float):
+    return prezzo - sconto
+
+def formatta_output(prezzo: float, sconto: float, prezzo_scontato: float):
+    return "{:<20} {:=10.2f} €\n".format("prezzo", prezzo) + "{:<20} {:=10.2f} €\n".format("sconto",sconto) + "{:<20} {:=10.2f} €\n".format("prezzo scontato", prezzo_scontato)
+
+def test():
+    num_pane_raffermo = int(input("Inserisci numero pagnotte -> "))
+    p = calcola_costo(num_pane_raffermo)
+    s = calcola_sconto(p)
+    p_s = applica_sconto(p, s)
+    print(formatta_output(p,s,p_s))
+
+if __name__ == "__main__":
+    test()
+
+
