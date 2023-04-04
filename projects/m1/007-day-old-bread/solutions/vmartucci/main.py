@@ -1,14 +1,11 @@
 COSTO = 3.49
 PERC_SCONTO = 60 / 100
 
-
 def calcola_costo(num_pane_raffermo: int):
     return num_pane_raffermo * COSTO
 
-
 def calcola_sconto(prezzo: float):
     return PERC_SCONTO * prezzo
-
 
 def applica_sconto(prezzo: float, sconto: float):
     return prezzo - sconto
