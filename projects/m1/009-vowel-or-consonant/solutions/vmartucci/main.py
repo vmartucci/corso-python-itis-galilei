@@ -20,12 +20,11 @@ def is_vocale(lettera):
 def is_y(lettera) :
     return lettera == 'y'
 
-def get_msg(lettera) :
+def get_msg(lettera):
     return "VOCALE" if is_vocale(lettera) else "VOCALE/CONSONANTE" if is_y(lettera) else "CONSONANTE"
 
 def test():
-    lettera = read_check_lower()
-    print(get_msg(lettera))
+    print(get_msg(read_check_lower()))
 
 if __name__ == "__main__":
     test()
