@@ -1,6 +1,5 @@
 from random import choices
 
-
 def createDeck():
   value = [
     "A",
