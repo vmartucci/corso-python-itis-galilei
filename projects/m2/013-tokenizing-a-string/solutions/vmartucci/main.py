@@ -1,6 +1,5 @@
 import re
 
-
 def tokenize_regex(stringa):
     x = re.findall("[0-9]+|[+\-*=/()]+", example)
     print(x)
@@ -14,7 +13,7 @@ def tokenize(stringa):
     for i in range(0,len_string):
         s = stringa[i]
 
-        if s in token_op:
+        if s in token_op :
             list_out.append(s)
         elif s in token_num :
             while i < len_string and stringa[i + 1] in token_num :
